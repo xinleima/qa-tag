@@ -1,0 +1,41 @@
+@import "../../src/less/default";
+
+@app-prefix: ~"@{prefix}-app";
+
+.@{app-prefix} {
+  .header {
+    position: fixed;
+    width: 100%;
+
+    .logo {
+      float: left;
+      margin-right: 20px;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 20px;
+    }
+
+    .menu {
+      line-height: 64px;
+      border: none;
+    }
+  }
+
+  .content {
+    padding: 0 50px;
+    margin-top: 64px;
+
+    .breadcrumb {
+      margin: 16px 0;
+    }
+
+    .main {
+      background: #fff;
+      padding: 24px;
+      min-height: 380px;
+    }
+  }
+
+  .footer {
+    text-align: center;
+  }
+}

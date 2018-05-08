@@ -7,18 +7,21 @@ export interface IRoute {
   component: React.ComponentType<any>;
   title: string;
   url: string;
+  breadcrumbs: string[]
 }
 
 const routes: IRoute[] = [
   {
+    breadcrumbs: ['问题列表'],
     component: Questions,
-    title: 'questions',
+    title: '问题列表',
     url: '/questions',
   },
   {
+    breadcrumbs: ['创建问题'],
     component: CreateQuestions,
-    title: 'new questions',
-    url: '/questions/new'
+    title: '创建问题',
+    url: '/questions/new',
   }
 ];
 

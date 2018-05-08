@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+import CreateQuestions from './pages/CreateQuestions';
 import Questions from "./pages/Questions";
 
 export interface IRoute {
@@ -12,6 +14,11 @@ const routes: IRoute[] = [
     component: Questions,
     title: 'questions',
     url: '/questions',
+  },
+  {
+    component: CreateQuestions,
+    title: 'new questions',
+    url: '/questions/new'
   }
 ];
 

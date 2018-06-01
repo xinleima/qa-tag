@@ -6,6 +6,23 @@ import { withRouter } from "react-router-dom";
 
 import { IRoute } from '../routes';
 
+function matchUrl(url: string, pathname: string) {
+  const urlParams = url.split('/');
+  const pathnameParams = pathname.split('/');
+
+  if (urlParams.length !== pathnameParams.length) {
+    return false;
+  }
+
+  for (let i = 0; i < urlParams.length; i++) {
+    if (!urlParams[i].startsWith(':') && urlParams[i] !== pathnameParams[i]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 /**
  * type.
  */
@@ -21,7 +38,7 @@ class Breadcrumbs extends React.Component<IBreadcrumbProps, {}> {
     const { location, routes } = this.props;
 
     const pathname = location.pathname;
-    const selectedRoute = routes.find((route) => route.url === pathname);
+    const selectedRoute = routes.find((route) => matchUrl(route.url, pathname));
     const breadcrumbs = selectedRoute ? selectedRoute.breadcrumbs : [];
 
     return (

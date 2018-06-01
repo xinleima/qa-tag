@@ -37,7 +37,7 @@ class Routes extends React.Component<{}, {}> {
             </div>
           </Content>
           <Footer className="footer">
-            Ant Design ©2016 Created by Ant UED
+            Q&amp;A-Tag ©2018 Created by Xinlei Ma
           </Footer>
         </Layout>
       </Router>

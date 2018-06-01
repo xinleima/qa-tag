@@ -25,9 +25,11 @@ class HeaderBar extends React.Component<IHeaderBarProps, {}> {
     const pathname = location.pathname;
     const selectedRoute = routes.find((route) => route.url === pathname);
 
-    const menuItems = routes.map((route) => (
-      <Menu.Item key={route.title}><Link to={route.url}>{route.title}</Link></Menu.Item>
-    ));
+    const menuItems = routes
+      .filter((route) => !route.hidden)
+      .map((route) => (
+        <Menu.Item key={route.title}><Link to={route.url}>{route.title}</Link></Menu.Item>
+      ));
 
     return (
       <Header className="header">

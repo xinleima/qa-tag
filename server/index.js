@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-// const proxy = require('express-http-proxy');
+const proxy = require('express-http-proxy');
 
 const app = express();
 
@@ -25,55 +25,6 @@ app.all('*',function (req, res, next) {
   }
 
   next();
-});
-
-// app.use('/api', proxy('localhost:8000'));
-app.post('/api/tags/', function (req, res, next) {
-  const title = req.param('title');
-
-  let resData = {};
-
-  if (title === 'What is the difference between range and xrange functions in Python 2.X?') {
-    resData = {
-      code: ['range'],
-      text: [
-        "decimal",
-        "anecdotal",
-        "loops",
-        "function",
-        "numpy",
-        "multiprocessing",
-        "difference",
-        "multidimensional-array",
-        "fractions"
-      ],
-      intersection: ["range", "xrange", "python", "arrays"]
-    }
-  } else if (title === 'Directory listing in Python') {
-    resData = {
-      code: ['os', 'C', 'os.path'],
-      text: [
-        "os.path",
-        "utf-8",
-        "hex",
-        "list",
-        "listing",
-        "recursion",
-        "file",
-        "C",
-        "ascii",
-        "unicode",
-        "encoding"
-      ],
-      intersection: [
-        "python",
-        "directory",
-        "os"
-      ]
-    }
-  }
-
-  res.send(resData)
 });
 
 
@@ -139,6 +90,8 @@ app.get('/api/question/:id', function (req, res, next) {
 
   res.send(question)
 });
+
+app.use('/api', proxy('localhost:8000'));
 
 app.all('*', function (req, res, next) {
   res.sendfile(path.join(__dirname, '../build/index.html'));
